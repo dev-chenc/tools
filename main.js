@@ -5,10 +5,15 @@ const {app, BrowserWindow} = require('electron')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+const debug = (process.argv.indexOf("--debug")>=0)
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 1366, height: 768})
 
+    if (debug) {
+        mainWindow.webContents.openDevTools()
+        mainWindow.maximize()
+    }
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 

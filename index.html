@@ -1,19 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<template>
+    <Menu mode="horizontal" :theme="theme1" active-name="1">
+        <MenuItem name="1">
+            <Icon type="ios-paper" />
+            内容管理
+        </MenuItem>
+        <MenuItem name="2">
+            <Icon type="ios-people" />
+            用户管理
+        </MenuItem>
+        <Submenu name="3">
+            <template slot="title">
+                <Icon type="ios-stats" />
+                统计分析
+            </template>
+            <MenuGroup title="使用">
+                <MenuItem name="3-1">新增和启动</MenuItem>
+                <MenuItem name="3-2">活跃分析</MenuItem>
+                <MenuItem name="3-3">时段分析</MenuItem>
+            </MenuGroup>
+            <MenuGroup title="留存">
+                <MenuItem name="3-4">用户留存</MenuItem>
+                <MenuItem name="3-5">流失用户</MenuItem>
+            </MenuGroup>
+        </Submenu>
+        <MenuItem name="4">
+            <Icon type="ios-construct" />
+            综合设置
+        </MenuItem>
+    </Menu>
+    <br>
+    <p>Change theme</p>
+    <RadioGroup v-model="theme1">
+        <Radio label="light"></Radio>
+        <Radio label="dark"></Radio>
+        <Radio label="primary"></Radio>
+    </RadioGroup>
+</template>
+<script>
+    export default {
+        data () {
+            return {
+                theme1: 'light'
+            }
+        }
+    }
+</script>
 
-    <script>
-      // You can also require other files to run in this process
-      require('./renderer.js')
-    </script>
-  </body>
+</body>
 </html>
